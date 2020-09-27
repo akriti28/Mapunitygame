@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mapunity Game</string>
+    <string name="title_activity_cities_levels">CitiesLevels</string>
+    <string name="title_activity_cities_game2">CitiesGame2</string>
+</resources>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mahe.mapunitygame.CitiesGame1">
+
+    <RelativeLayout
+        android:layout_width="375dp"
+        android:layout_height="484dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="-2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571"
+        tools:layout_editor_absoluteX="15dp">
+
+        <TextView
+            android:id="@+id/lat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/editText"
+            android:layout_marginTop="74dp"
+            android:text="Latitude :"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="86dp" />
+
+        <TextView
+            android:id="@+id/lon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/lat"
+            android:layout_alignStart="@+id/lat"
+            android:layout_below="@+id/lat"
+            android:layout_marginTop="48dp"
+            android:text="Longitude :"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
+            android:text="I Don't Know"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="422dp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button2"
+            android:layout_alignLeft="@+id/button2"
+            android:layout_alignStart="@+id/button2"
+            android:layout_marginBottom="32dp"
+            android:text="Submit"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="356dp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button1"
+            android:layout_alignLeft="@+id/button1"
+            android:layout_alignStart="@+id/button1"
+            android:layout_marginBottom="45dp"
+            android:ems="10"
+            android:hint="Enter here"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="74dp"
+            tools:layout_editor_absoluteY="260dp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/lat"
+            android:layout_alignBottom="@+id/lat"
+            android:layout_marginLeft="42dp"
+            android:layout_marginStart="42dp"
+            android:layout_toEndOf="@+id/lon"
+            android:layout_toRightOf="@+id/lon"
+            android:text=" "
+            tools:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lon"
+            android:layout_alignEnd="@+id/textView1"
+            android:layout_alignRight="@+id/textView1"
+            android:text=" "
+            tools:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText"
+            android:layout_marginTop="13dp"
+            android:text=" "
+            tools:layout_width="170dp"
+            tools:textSize="15sp"
+            android:layout_toRightOf="@+id/button2"
+            android:layout_toEndOf="@+id/button2" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@+id/textView2"
+            android:layout_toStartOf="@+id/textView2"
+            android:text="Score: "
+            tools:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView3"
+            android:layout_toEndOf="@+id/editText"
+            android:layout_toRightOf="@+id/editText"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button2"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_alignTop="@+id/button2"
+            android:text="Hint" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
