@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaflet</title>
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<div id="mapid" style="width:1000px;height:600px;"></div>
+
+<link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css" />
+<link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet-search/style.css" />
+<style>
+.search-input {
+	font-family:Courier
+}
+.search-input,
+.leaflet-control-search {
+	max-width:400px;
+}
+</style>
+</head>
+
+<body>
+<script src="http://labs.easyblog.it/maps/leaflet/dist/leaflet.js"></script>
+<script src="http://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+Radius : <input type="text" name="radius" id="radius" />
+
+<input type="button" id="submit" value="submit" />
+<script>
+L.Map = L.Map.extend({
+    openPopup: function(popup) {
+        //        this.closePopup();  // just comment this
+        this._popup = popup;
+
+        return this.addLayer(popup).fire('popupopen', {
+            popup: this._popup
+        });
+    }
+});
+var mymap = L.map('mapid').setView([13.0481, 77.6222], 12);
+var layer = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWtyaXRpIiwiYSI6ImNpcHRocHgwbTA1aWJoMW5yNDQ0cHVibjkifQ.RBy-PcWC2ojVf2wRumi0zg', 
+{
+    accessToken: 'pk.eyJ1IjoiYWtyaXRpIiwiYSI6ImNpcHRocHgwbTA1aWJoMW5yNDQ0cHVibjkifQ.RBy-PcWC2ojVf2wRumi0zg'
+}).addTo(mymap);
+
+mymap.addControl( new L.Control.Search({
+		url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+		jsonpParam: 'json_callback',
+		propertyName: 'display_name',
+		propertyLoc: ['lat','lon'],
+		markerLocation: true,
+		autoCollapse: true,
+		autoType: false,
+		minLength: 2
+	}) );
+var lat, lon,marker;
+
+
+function onMapClick(e) {
+	if(marker!=null)
+		{mymap.removeLayer(marker);}
+		 marker = L.marker([e.latlng.lat,e.latlng.lng]).addTo(mymap);
+
+    	 lat = e.latlng.lat;
+	 lon = e.latlng.lng;
+	
+};
+
+$('#submit').click(function() {
+	var radius = $('#radius').val();
+	var url = "http://mapunitygroups.com/api/v2/community/employees-tdm.json?lat=" + lat + "&lon=" + lon +"&radius=" + radius;
+	$.ajax({
+  		url: url,
+		type: 'GET'
+	}).done(function( data ) {
+    		$.each(data.posts, function(index, post){
+			console.log(post.lat);
+			console.log(post.lon);
+			console.log(post.label);
+			var marker1 = L.marker([post.lat,post.lon]).addTo(mymap);
+		for (i=1; i<post.length; i++)
+			{
+			marker1.bindPopup(post.label).openPopup();
+			}
+		});
+  	});
+});
+
+
+mymap.on('click', onMapClick);
+
+
+    
+</script>
+
+</body>
+</html>
